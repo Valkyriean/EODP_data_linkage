@@ -20,4 +20,4 @@ for buy_i, buy_row in buy.iterrows():
         blocks_key = buy_row["manufacturer"].lower().split(" ", 1)[0]
     else:
         blocks_key = buy_row["name"].lower().split(" ", 1)[0]
-    abt_blocks_writer.writerow([blocks_key, buy_row['idBuy']])
+    buy_blocks_writer.writerow([blocks_key, buy_row['idBuy']])
