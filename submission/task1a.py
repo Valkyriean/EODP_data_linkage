@@ -10,9 +10,13 @@ task1a = open("task1a.csv", 'w', newline='')
 task1a_writer = csv.writer(task1a)
 task1a_writer.writerow(["idAbt", "idBuy"])
 for abt_i, abt_row in abt.iterrows():
+    max_score = 0
     abt_name = abt_row["name"].lower().translate(str.maketrans('', '', string.punctuation))
     for buy_i, buy_row in buy.iterrows():
         buy_name = buy_row["name"].lower().translate(str.maketrans('', '', string.punctuation))
-        score = textdistance.lcsseq.normalized_similarity(abt_name, buy_name)
-        if score > 0.4:
-            task1a_writer.writerow([abt_row['idABT'], buy_row['idBuy']])
+        score = textdistance.hamming.normalized_similarity(abt_name,buy_name)
+        if score > max_score:
+            max_score = score
+            max_buy_row = buy_row
+    if max_score > 0.5:
+        task1a_writer.writerow([abt_row['idABT'], max_buy_row['idBuy']])
