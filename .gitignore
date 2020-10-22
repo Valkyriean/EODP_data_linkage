@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+abt_blocks.csv
+buy_blocks.csv
+combine.csv
+task2a.csv
+
 # C extensions
 *.so
 
