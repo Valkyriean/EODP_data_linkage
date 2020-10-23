@@ -34,7 +34,6 @@ for key, value in x_train.iteritems():
 scaler = preprocessing.StandardScaler().fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
-
 # K Neighbors Classifier with k = 3
 knn3 = KNeighborsClassifier(n_neighbors=3)
 knn3.fit(x_train, y_train)
@@ -50,7 +49,7 @@ clf = DecisionTreeClassifier(max_depth=3, random_state=200)
 clf.fit(x_train, y_train)
 clf_pred = clf.predict(x_test)
 clf_score = accuracy_score(y_test, clf_pred)
-
+# Printing out results
 print("Accuracy of decision tree: " + str(round(clf_score, 3)))
 print("Accuracy of k-nn (k=3): " + str(round(knn3_score, 3)))
 print("Accuracy of k-nn (k=7): " + str(round(knn7_score, 3)))

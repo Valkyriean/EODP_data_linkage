@@ -1,5 +1,10 @@
-for i in range(1,10):
-    print(i)
-    print(i*1.5*252)
-    print(i*283.6)
-    print("\n")
+import numpy as np
+N = 10
+a = [[1,2,3],
+     [4,5,6]]
+b=[1,2]
+print(a)
+print(b)
+print(np.c_[ a, b ] )
+
+
