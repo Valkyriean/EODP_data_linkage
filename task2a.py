@@ -1,12 +1,12 @@
 # Code by Jiachen Li, 1068299
 import csv
+import numpy as np
 import pandas as pd
 from sklearn import preprocessing
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
 
 # Read in both files
 world = pd.read_csv("world.csv", header=0, encoding='ISO-8859-1')
@@ -27,10 +27,10 @@ x_train = x_train.replace('..', np.NaN)
 x_train = x_train.fillna(x_train.median()).astype("float64")
 x_test = x_test.replace('..', np.NaN)
 x_test = x_test.fillna(x_train.median()).astype("float64")
-# Scale x_train
+# CSV writing
 for key, value in x_train.iteritems():
     task2a_writer.writerow([key, round(value.median(), 3), round(value.mean(), 3), round(value.var(), 3)])
-# Scale x_test
+# Scale
 scaler = preprocessing.StandardScaler().fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
